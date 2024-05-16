@@ -36,6 +36,11 @@ const defaults = new Map(
       type: "string",
       default: "development",
     },
+    // the env stage deno is running in
+    DENO1_ENV: {
+      type: "string",
+      default: "production",
+    },
     // the env stage fastly is running in
     FASTLY_ENV: {
       type: "string",
@@ -292,7 +297,7 @@ export default class EnvManager {
     if (this.runtime === "node") return this.get("NODE_ENV");
     if (this.runtime === "bun") return this.get("BUN_ENV");
     if (this.runtime === "worker") return this.get("WORKER_ENV");
-    if (this.runtime === "deno") return this.get("DENO_ENV");
+    if (this.runtime === "deno") return this.get("DENO1_ENV");
     if (this.runtime === "fastly") return this.get("FASTLY_ENV");
     return null;
   }
